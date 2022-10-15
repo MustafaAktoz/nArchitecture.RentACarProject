@@ -8,11 +8,11 @@ public class RentalBranch : Entity
     public City City { get; set; }
    
 
-    public virtual ICollection<Car> Cars { get; set; }
+    public virtual ICollection<Rental> Rentals { get; set; }
 
     public RentalBranch()
     {
-        Cars = new HashSet<Car>();
+        Rentals = new HashSet<Rental>();
     }
 
     public RentalBranch(int id, City city) : this()

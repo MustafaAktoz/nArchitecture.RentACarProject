@@ -68,7 +68,7 @@ public class CreateRentalCommand : IRequest<CreatedRentalDto>, ILoggableRequest
                 await _findeksCreditRateService.GetFindeksCreditRateByCustomerId(request.CustomerId);
 
             Car? carToBeRented = await _carService.GetAvailableCarToRent(
-                                     request.ModelId, request.RentStartRentalBranchId, request.RentStartDate,
+                                     request.ModelId, request.RentStartDate,
                                      request.RentEndDate);
 
             await _rentalBusinessRules.RentalCanNotBeCreatedWhenCustomerFindeksScoreLowerThanCarMinFindeksScore(

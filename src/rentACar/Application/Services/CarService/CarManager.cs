@@ -35,11 +35,10 @@ public class CarManager : ICarService
         return updatedCar;
     }
 
-    public async Task<Car?> GetAvailableCarToRent(int modelId, int rentStartRentalBranch, DateTime rentStartDate,
+    public async Task<Car?> GetAvailableCarToRent(int modelId, DateTime rentStartDate,
                                                   DateTime rentEndDate)
     {
-        Car? carToFind = await _carRepository.GetAsync(c => c.ModelId == modelId && 
-                                                            c.RentalBranchId == rentStartRentalBranch &&
+        Car? carToFind = await _carRepository.GetAsync(c => c.ModelId == modelId &&
                                                             !c.Rentals.Any(r=>r.RentStartDate <= rentStartDate && r.RentEndDate >= rentEndDate), 
                                                             include:i=>i.Include(i=>i.Rentals));
         if (carToFind != null) return carToFind;

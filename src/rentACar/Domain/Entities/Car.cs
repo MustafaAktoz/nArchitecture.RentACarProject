@@ -7,7 +7,6 @@ public class Car : Entity
 {
     public int ColorId { get; set; }
     public int ModelId { get; set; }
-    public int RentalBranchId { get; set; }
     public CarState CarState { get; set; }
     public int Kilometer { get; set; }
     public short ModelYear { get; set; }
@@ -15,7 +14,6 @@ public class Car : Entity
     public short MinFindeksCreditRate { get; set; }
 
     public virtual Color? Color { get; set; }
-    public virtual RentalBranch? RentalBranch { get; set; }
     public virtual Model? Model { get; set; }
     public virtual ICollection<CarDamage> CarDamages { get; set; }
     public virtual ICollection<Rental> Rentals { get; set; }
@@ -26,7 +24,7 @@ public class Car : Entity
         CarDamages = new HashSet<CarDamage>();
     }
 
-    public Car(int id, int colorId, int modelId, int rentalBranchId, CarState carState, int kilometer,
+    public Car(int id, int colorId, int modelId, CarState carState, int kilometer,
                short modelYear,
                string plate,
                short minFindeksCreditRate) : this()
@@ -34,7 +32,6 @@ public class Car : Entity
         Id = id;
         ColorId = colorId;
         ModelId = modelId;
-        RentalBranchId = rentalBranchId;
         CarState = carState;
         Kilometer = kilometer;
         ModelYear = modelYear;
